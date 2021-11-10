@@ -1,0 +1,39 @@
+﻿@using Newtonsoft.Json
+@model IPara.DeveloperPortal.Core.Response.BankCardDeleteResponse
+@{
+    ViewBag.Title = "Cüzdandan Kart Sil";
+}
+
+<form action="" method="post" class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Cüzdandan Kart Sil</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Kullanıcı Id (*):</label>
+            <div class="col-md-4">
+                <input name="userId" type="text" value="123456" class="form-control input-md" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Kart Id (Opsiyonel):</label>
+            <div class="col-md-4">
+                <input value="" name="cardId" class="form-control input-md">
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for=""></label>
+            <div class="col-md-4">
+                <button type="submit" id="" name="" class="btn btn-success">Sorgula</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<br />
+<pre>
+    @Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented))
+</pre>

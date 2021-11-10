@@ -1,0 +1,86 @@
+﻿@using Newtonsoft.Json
+@model IPara.DeveloperPortal.Core.Response.PaymentInquiryWithTimeResponse
+@{
+    ViewData["Title"] = "Ödemeleri Listele";
+
+    var momentStartDate = ViewBag.momentStartDate;
+    var startDay = momentStartDate.Day.ToString();
+    var startMonth = momentStartDate.Month.ToString();
+    var startYear = momentStartDate.Year.ToString();
+
+    var momentEndDate = ViewBag.momentEndDate;
+    var endDay = momentEndDate.Day.ToString();
+    var endMonth = momentEndDate.Month.ToString();
+    var endYear = momentEndDate.Year.ToString();
+}
+
+<form action="" method="post" class="form-horizontal">
+    <fieldset>
+        <!-- Form Name -->
+        <legend>Ödeme Listele</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Başlangıç Tarihi (Gün/Ay/Yıl) (*):</label>
+            <div class="col-md-1">
+                <input name="startDay"
+                       type="text"
+                       value="@startDay"
+                       class="form-control input-md"
+                       required="" />
+            </div>
+            <div class="col-md-1">
+                <input name="startMonth"
+                       type="text"
+                       value="@startMonth"
+                       class="form-control input-md"
+                       required="" />
+            </div>
+            <div class="col-md-1">
+                <input name="startYear"
+                       type="text"
+                       value="@startYear"
+                       class="form-control input-md"
+                       required="" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Bitiş Tarihi (Gün/Ay/Yıl) (*):</label>
+            <div class="col-md-1">
+                <input name="endDay"
+                       type="text"
+                       value="@endDay"
+                       class="form-control input-md"
+                       required="" />
+            </div>
+            <div class="col-md-1">
+                <input name="endMonth"
+                       type="text"
+                       value="@endMonth"
+                       class="form-control input-md"
+                       required="" />
+            </div>
+            <div class="col-md-1">
+                <input name="endYear"
+                       type="text"
+                       value="@endYear"
+                       class="form-control input-md"
+                       required="" />
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for=""></label>
+            <div class="col-md-4">
+                <button type="submit" id="" name="" class="btn btn-success">
+                    Ödemeleri Listele
+                </button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+<pre>
+    @Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented))
+</pre>

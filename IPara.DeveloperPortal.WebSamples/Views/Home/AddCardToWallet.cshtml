@@ -1,0 +1,69 @@
+﻿@using Newtonsoft.Json
+@model IPara.DeveloperPortal.Core.Response.BankCardCreateResponse
+@{
+    ViewBag.Title = "Cüzdana Kart Ekleme";
+}
+
+<form action="" method="post" class="form-horizontal">
+    <fieldset>
+        <!-- Form Name -->
+        <legend>Cüzdana Kart Ekleme</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Kullanıcı Id (*):</label>
+            <div class="col-md-4">
+                <input name="userId" type="text" value="123456" class="form-control input-md" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Kart Sahibi Adı Soyadı (*):</label>
+            <div class="col-md-4">
+                <input value="Fatih Coşkun" name="nameSurname" class="form-control input-md" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Kart Numarası (*):</label>
+            <div class="col-md-4">
+                <input value="4531444531442283" name="cardNumber" class="form-control input-md" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Son Kullanma Tarihi Ay/Yıl (*):</label>
+            <div class="col-md-1">
+                <input name="month"
+                       type="text"
+                       value="12"
+                       class="form-control input-md"
+                       required />
+            </div>
+            <div class="col-md-1">
+                <input name="year"
+                       type="text"
+                       value="24"
+                       class="form-control input-md"
+                       required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Kart Kısa Adı (*):</label>
+            <div class="col-md-4">
+                <input value="Maaş Kartı" name="cardAlias" class="form-control input-md" required>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for=""></label>
+            <div class="col-md-4">
+                <button type="submit" id="" name="" class="btn btn-success">
+                    Kartı Ekle
+                </button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<br />
+<pre>
+    @Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented))
+</pre>
