@@ -1,0 +1,46 @@
+﻿@using System.Xml.Linq
+@using IPara.DeveloperPortal.Core
+@model IPara.DeveloperPortal.Core.Response.PaymentInquiryResponse
+@{
+    ViewData["Title"] = "Ödeme Sorgulama";
+}
+
+<form action="" method="post" class="form-horizontal">
+    <fieldset>
+        <!-- Form Name -->
+        <legend>Ödeme Sorgulama</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Sipariş Numarası (*):</label>
+            <div class="col-md-4">
+                <input name="orderId"
+                       type="text"
+                       value="58e1e9f22690b"
+                       class="form-control input-md"
+                       required />
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for=""></label>
+            <div class="col-md-4">
+                <button type="submit" id="" name="" class="btn btn-success">
+                    Sorgula
+                </button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<br />
+<pre>
+    @{
+        string formatted = "null";
+        if (Model!=null)
+        {
+            formatted = XDocument.Parse(XmlBuilder.GetXMLFromObject(Model)).ToString();
+        }
+        @Html.Raw(Html.Encode(formatted));      
+    }
+</pre>

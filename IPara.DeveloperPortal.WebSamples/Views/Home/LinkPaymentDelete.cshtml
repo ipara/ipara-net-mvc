@@ -1,0 +1,33 @@
+﻿@using Newtonsoft.Json
+@model IPara.DeveloperPortal.Core.Response.LinkPaymentDeleteResponse
+@{
+    ViewBag.Title = "Ödeme Linki Sil";
+}
+
+<form action="" method="post" class="form-horizontal">
+    <fieldset>
+        <!-- Form Name -->
+        <legend>Ödeme Linki Sil</legend>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Link Id (**):</label>
+            <div class="col-md-4">
+                <input type="text" name="linkId" class="form-control input-md" required>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for=""></label>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-success">Ödeme Linkini Sil</button>
+            </div>
+        </div>
+    </fieldset>
+    <p>** Ödeme linki oluşturduğunuzda dönen "linkPaymentId" parametresidir.</p>
+</form>
+
+<br />
+<pre>
+    @Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented))
+</pre>

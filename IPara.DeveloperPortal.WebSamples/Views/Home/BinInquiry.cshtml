@@ -1,0 +1,63 @@
+﻿@using Newtonsoft.Json
+@model IPara.DeveloperPortal.Core.Response.BinNumberInquiryResponse
+@{
+    ViewData["Title"] = "Bin Sorgulama";
+}
+
+<form action="" method="post" class="form-horizontal">
+    <fieldset>
+        <!-- Form Name -->
+        <legend>Bin Sorgulama</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="binNumber">Bin Numarası (*):</label>
+            <div class="col-md-4">
+                <input id="binNumber"
+                       name="binNumber"
+                       type="text"
+                       value="466280"
+                       class="form-control input-md"
+                       required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="amount">Tutar (**):</label>
+            <div class="col-md-4">
+                <input id="amount"
+                       name="amount"
+                       type="text"
+                       value="10000"
+                       class="form-control input-md"
+                       required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="threeD">3D / Non-Secure (*):</label>
+            <div class="col-md-4">
+                <select class="form-control input-md" name="threeD">
+                    <option value="true">3D</option>
+                    <option value="false">Non-Secure</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for=""></label>
+            <div class="col-md-4">
+                <button type="" id="pay" name="" class="btn btn-success">
+                    Sorgula
+                </button>
+            </div>
+        </div>
+    </fieldset>
+    <p>** Sipariş tutarı kuruş ayracı olmadan gönderilmelidir. Örneğin; 1 TL 100, 12 1200, 130 13000, 1.05 105, 1.2 120 olarak gönderilmelidir.</p>
+</form>
+
+<br />
+<pre>
+    @Html.Raw(JsonConvert.SerializeObject(Model, Formatting.Indented))
+</pre>

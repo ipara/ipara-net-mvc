@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Entity\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Request\" />
+    <None Remove="Response\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entity\" />
+    <Folder Include="Request\" />
+    <Folder Include="Response\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+</Project>
