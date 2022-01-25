@@ -508,13 +508,17 @@ namespace IPara.DeveloperPortal.WebSamples.Controllers
         /// <param name="pageIndex"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult LinkPaymentList(string email, string gsm, string linkState, string startDay, string startMonth,
+        public ActionResult LinkPaymentList(string email, string gsm, string linkId, string linkState, string startDay, string startMonth,
             string startYear, string endDay, string endMonth, string endYear, string pageSize, string pageIndex)
         {
             LinkPaymentListRequest request = new();
             request.Email = email;
             request.Gsm = gsm;
             request.LinkState = linkState != "-1" ? linkState : null;
+            if (!String.IsNullOrEmpty(linkId))
+            {
+                request.LinkId = linkId;
+            }
             if (!String.IsNullOrEmpty(startDay))
             { // Eğer başlangıç tarihi girildiyse, bitiş tarihi de girilmelidir.
                 request.StartDate = startYear + "-" + startMonth + "-" + startDay + " 00:00:00";

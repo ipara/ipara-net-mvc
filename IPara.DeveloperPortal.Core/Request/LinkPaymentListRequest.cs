@@ -11,6 +11,8 @@ namespace IPara.DeveloperPortal.Core.Request
 
         public string Gsm { get; set; }
 
+        public string LinkId { get; set; }
+
         public string LinkState { get; set; }
 
         public string StartDate { get; set; }
