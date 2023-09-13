@@ -264,6 +264,33 @@ namespace IPara.DeveloperPortal.WebSamples.Controllers
         }
 
         /// <summary>
+        /// Bin sorgulama V4 sayfasını temsil eder.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult BinInquiryV4()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Bin sorgulama sayfasından post edilen bin numarasının ilgili serviste işlenip sonucunun ekranda gösterildiği sayfayı temsil eder.
+        /// </summary>
+        /// <param name="binNumber"></param>
+        /// <param name="amount"></param>
+        /// <param name="threeD"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult BinInquiryV4(string binNumber, string amount, bool threeD)
+        {
+            BinNumberInquiryV4Request request = new();
+            request.BinNumber = binNumber;
+            request.Amount = amount;
+            request.ThreeD = threeD;
+
+            return View(BinNumberInquiryV4Request.Execute(request, settings));
+        }
+
+        /// <summary>
         /// Cüzdana kart ekleme sayfasını temsil eder.
         /// </summary>
         /// <returns></returns>
@@ -608,6 +635,84 @@ namespace IPara.DeveloperPortal.WebSamples.Controllers
 
             return View(PaymentRefundInquiryRequest.Execute(request, settings));
         }
+
+        /// <summary>
+        /// Checkout Form Oluşturma sayfasını temsil eder.
+        /// </summary>
+        /// <returns></returns>  
+        public ActionResult CheckoutFormCreate()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Checkout Form Oluşturma sayfasından post edilen değerlerle ilgili servise istek bilgisinin gönderildiği sonucunun ekrana yazdırıldığı sayfayı temsil eder.
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult CheckoutFormCreate(String amount)
+        {
+            CheckoutFormCreateRequest request = new();
+            request.OrderId = Guid.NewGuid().ToString();
+            request.Version = settings.Version;
+            request.Amount = 10000;
+            request.CallbackUrl = "https://apitest.ipara.com/rest/payment/threed/test/result";           
+            request.VendorId = "10100";
+            request.Threed = "false";
+            request.AllowedInstallments = new HashSet<string>{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+
+            request.Echo = "";
+            request.Mode = settings.Mode;
+            request.Language = "tr-TR";
+
+            request.Purchaser = new();
+            request.Purchaser.Name = "Murat";
+            request.Purchaser.SurName = "Kaya";
+            request.Purchaser.BirthDate = "1986-07-11";
+            request.Purchaser.Email = "murat@kaya.com";
+            request.Purchaser.GsmPhone = "5881231212";
+            request.Purchaser.IdentityNumber = "12345678901";
+            request.Purchaser.ClientIp = "127.0.0.1";
+
+            request.Purchaser.InvoiceAddress = new();
+            request.Purchaser.InvoiceAddress.Name = "Murat";
+            request.Purchaser.InvoiceAddress.SurName = "Kaya";
+            request.Purchaser.InvoiceAddress.Address = "Mevlüt Pehlivan Mah. Multinet Plaza Şişli";
+            request.Purchaser.InvoiceAddress.ZipCode = "34782";
+            request.Purchaser.InvoiceAddress.CityCode = "34";
+            request.Purchaser.InvoiceAddress.IdentityNumber = "12345678901";
+            request.Purchaser.InvoiceAddress.CountryCode = "TR";
+            request.Purchaser.InvoiceAddress.TaxNumber = "123456";
+            request.Purchaser.InvoiceAddress.TaxOffice = "Kozyatağı";
+            request.Purchaser.InvoiceAddress.CompanyName = "iPara";
+            request.Purchaser.InvoiceAddress.PhoneNumber = "2122222222";
+
+            request.Purchaser.ShippingAddress = new();
+            request.Purchaser.ShippingAddress.Name = "Murat";
+            request.Purchaser.ShippingAddress.SurName = "Kaya";
+            request.Purchaser.ShippingAddress.Address = "Mevlüt Pehlivan Mah. Multinet Plaza Şişli";
+            request.Purchaser.ShippingAddress.ZipCode = "34782";
+            request.Purchaser.ShippingAddress.CityCode = "34";
+            request.Purchaser.ShippingAddress.IdentityNumber = "12345678901";
+            request.Purchaser.ShippingAddress.CountryCode = "TR";
+            request.Purchaser.ShippingAddress.PhoneNumber = "2122222222";
+
+            request.Products = new List<Product>();
+            Product p = new();
+            p.Title = "Telefon";
+            p.Code = "TLF0001";
+            p.Price = "5000";
+            p.Quantity = 1;
+            request.Products.Add(p);
+
+            p = new();
+            p.Title = "Bilgisayar";
+            p.Code = "BLG0001";
+            p.Price = "5000";
+            p.Quantity = 1;
+            request.Products.Add(p);
+
+            return View(CheckoutFormCreateRequest.Execute(request, settings));
+        }
     }
 }
-
